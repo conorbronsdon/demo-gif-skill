@@ -1,14 +1,22 @@
+<div align="center">
+
 # demo-gif
 
-![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+Add a demo GIF to any repo's README in one prompt. Scripted, reproducible recordings — vhs for terminals, Playwright for web apps — rendered, optimized, and embedded.
 
-A Claude Code skill that adds a demo GIF to a repo's README. Point it at a CLI tool, a TUI, a web app, or a library and it picks a recording method, generates a reproducible recording script, renders it, shrinks the file, and drops in the right markdown.
-
-The goal is to make "add a demo gif to this README" a one-prompt task instead of a 45-minute detour into screen recording software, hand-tuned ffmpeg flags, and a 30 MB file nobody wants to commit.
+[![GitHub stars](https://img.shields.io/github/stars/conorbronsdon/demo-gif-skill?style=social)](https://github.com/conorbronsdon/demo-gif-skill/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![X](https://img.shields.io/badge/X-@ConorBronsdon-black?style=flat-square&logo=x)](https://x.com/ConorBronsdon)
 
 <img src="docs/demo.gif" width="800" alt="Terminal session catting docs/sample.tape, a minimal vhs recording script, then running ls -la on the rendered docs/sample.gif to show its real file size (3890 bytes)" />
 
-This GIF is the skill dogfooding itself: `docs/demo.tape` and `docs/sample.tape` are both committed, so it's regenerable exactly the way Step 5 recommends. See the tape files for two real findings from building it — `vhs` isn't on PATH inside vhs's own recorded shell, and nesting a live `vhs` render inside another vhs recording crashes go-rod.
+</div>
+
+---
+
+A skill for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and any [agentskills.io](https://agentskills.io)-compatible agent. Point it at a CLI tool, a TUI, a web app, or a library and it picks a recording method, generates a reproducible recording script, renders it, shrinks the file, and drops in the right markdown — turning "add a demo gif to this README" into a one-prompt task instead of a 45-minute detour into screen recording software, hand-tuned ffmpeg flags, and a 30 MB file nobody wants to commit.
+
+The GIF above is the skill dogfooding itself: `docs/demo.tape` and `docs/sample.tape` are both committed, so it's regenerable exactly the way Step 5 recommends. See the tape files for two real findings from building it — `vhs` isn't on PATH inside vhs's own recorded shell, and nesting a live `vhs` render inside another vhs recording crashes go-rod.
 
 ## What it does
 
@@ -80,3 +88,9 @@ The size targets and flag choices in `SKILL.md` and the reference docs were chec
 ## License
 
 MIT. See `LICENSE`.
+
+## About
+
+Built by [Conor Bronsdon](https://conorbronsdon.com) — host of [Chain of Thought](https://chainofthought.show/), a podcast on AI engineering. More skills and tools at [github.com/conorbronsdon](https://github.com/conorbronsdon) · [X](https://x.com/ConorBronsdon) · [LinkedIn](https://www.linkedin.com/in/conorbronsdon/).
+
+This is a personal open-source project; it isn't affiliated with or endorsed by any employer or client.
