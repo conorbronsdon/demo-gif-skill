@@ -44,7 +44,7 @@ Put these before any `Type`/`Enter`/etc. commands — they configure the termina
 | `Set Width <number>` / `Set Height <number>` | Terminal window size in px |
 | `Set LetterSpacing <float>` | Font tracking |
 | `Set LineHeight <float>` | Font line height |
-| `Set Theme "<name>"` or a JSON object | Color theme — run `vhs themes` for the full list (hundreds, including Dracula, Nord, Monokai, Catppuccin variants, GitHub Dark/Light) |
+| `Set Theme "<name>"` or a JSON object | Color theme — run `vhs themes` for the full list (348 on vhs 0.11.0, including `Dracula`, `nord`, `Monokai Pro`, `Catppuccin Mocha`, `GitHub Dark`). Names are case-sensitive and often don't match the tool's own casing or naming — `Set Theme "Nord"` and `Set Theme "Monokai"` both fail at render time (not caught by `vhs validate`); confirm the exact string with `vhs themes \| grep -i <name>` first |
 | `Set Padding <number>` | Inner padding around the terminal content |
 | `Set Margin <number>` | Outer margin (needs `MarginFill` to be visible) |
 | `Set MarginFill "<file|#hex>"` | Color or image to fill the margin with |
@@ -53,7 +53,7 @@ Put these before any `Type`/`Enter`/etc. commands — they configure the termina
 | `Set WindowBarSize <number>` | Height of the window bar in px (default 40) |
 | `Set Framerate <number>` | Capture framerate |
 | `Set PlaybackSpeed <float>` | Speed multiplier applied to the final render (e.g. `2` renders at 2x speed) |
-| `Set LoopOffset <float>%` | Shifts which frame the GIF loop starts on — useful to make a loop feel seamless |
+| `Set LoopOffset <float>%` | Shifts which frame the GIF loop starts on — useful so the loop point doesn't visibly jump |
 | `Set TypingSpeed <time>` | Per-keystroke delay for `Type` commands, default `50ms` |
 
 ## Typing and keys
@@ -182,15 +182,15 @@ Note the `Sleep 500ms` before each `Enter` — it separates "typing finished" fr
 vhs validate demo.tape
 ```
 
-Parses the tape and checks `Require`d dependencies without actually rendering — the fastest way to catch a typo or a missing binary before spending render time.
+Parses the tape and checks syntax without actually rendering — the fastest way to catch a typo before spending render time. It does **not** check `Require`d binaries or whether `ttyd`/`ffmpeg` are on PATH (confirmed against vhs 0.11.0: a tape with `Require some-binary-not-on-path` still passes `validate` and only fails when actually rendered). Check dependencies directly (`ttyd --version`, `ffmpeg -version`, or whatever `Require` names) before rendering if you're unsure they're installed.
 
 ## Installing vhs
 
 | Platform | Command |
 |---|---|
 | macOS | `brew install vhs` |
-| Windows | `scoop install charmbracelet/tap/vhs` or `winget install charmbracelet.vhs` |
-| Debian/Ubuntu | `sudo apt install vhs ffmpeg` (also install `ttyd` separately if your distro's `vhs` package doesn't pull it in) |
+| Windows | `scoop install vhs` (also installs `ttyd`/`ffmpeg` as dependencies) or `winget install charmbracelet.vhs` |
+| Debian/Ubuntu | Not in the default apt repos — add charm's repo first: `curl -fsSL https://repo.charm.sh/apt/gpg.key \| sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg`, then `echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" \| sudo tee /etc/apt/sources.list.d/charm.list`, then `sudo apt update && sudo apt install vhs ffmpeg`. Install `ttyd` separately from its [GitHub releases](https://github.com/tsl0922/ttyd/releases) — apt doesn't carry it. |
 | Arch | `pacman -S vhs` |
 | Nix | `nix-env -iA nixpkgs.vhs` |
 | Go (any OS) | `go install github.com/charmbracelet/vhs@latest` |
