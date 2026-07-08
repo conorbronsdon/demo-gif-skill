@@ -6,6 +6,10 @@ A Claude Code skill that adds a demo GIF to a repo's README. Point it at a CLI t
 
 The goal is to make "add a demo gif to this README" a one-prompt task instead of a 45-minute detour into screen recording software, hand-tuned ffmpeg flags, and a 30 MB file nobody wants to commit.
 
+<img src="docs/demo.gif" width="800" alt="Terminal session catting docs/sample.tape, a minimal vhs recording script, then running ls -la on the rendered docs/sample.gif to show its real file size (3890 bytes)" />
+
+This GIF is the skill dogfooding itself: `docs/demo.tape` and `docs/sample.tape` are both committed, so it's regenerable exactly the way Step 5 recommends. See the tape files for two real findings from building it — `vhs` isn't on PATH inside vhs's own recorded shell, and nesting a live `vhs` render inside another vhs recording crashes go-rod.
+
 ## What it does
 
 1. Looks at the repo and figures out what kind of demo fits: terminal recording for a CLI or TUI, browser recording for a web app, a REPL/example script for a library.
@@ -39,7 +43,7 @@ Claude Code reads `SKILL.md`, works out whether the repo is a CLI, TUI, web app,
 
 You need at least one of these installed, depending on what you're demoing:
 
-- **Terminal demos:** [vhs](https://github.com/charmbracelet/vhs) (`brew install vhs`, `scoop install charmbracelet/tap/vhs`, `go install github.com/charmbracelet/vhs@latest`, or Docker). vhs itself shells out to `ttyd` and `ffmpeg`, so those need to be on PATH too. No vhs available? Fall back to [asciinema](https://asciinema.org/) + [agg](https://github.com/asciinema/agg) — covered in `references/tape-cookbook.md`.
+- **Terminal demos:** [vhs](https://github.com/charmbracelet/vhs) (`brew install vhs`, `scoop install vhs`, `go install github.com/charmbracelet/vhs@latest`, or Docker). vhs itself shells out to `ttyd` and `ffmpeg`, so those need to be on PATH too (scoop's manifest installs both as dependencies automatically). No vhs available? Fall back to [asciinema](https://asciinema.org/) + [agg](https://github.com/asciinema/agg) — covered in `references/tape-cookbook.md`.
 - **Web app demos:** [Playwright](https://playwright.dev/) (`npm install -D @playwright/test`) plus [ffmpeg](https://ffmpeg.org/) for the video-to-GIF conversion.
 - **Optimization:** [gifsicle](https://www.lcdf.org/gifsicle/) for the final size pass. Optional: [gifski](https://gif.ski/) as an alternative GIF encoder for image-heavy content.
 
@@ -56,6 +60,11 @@ demo-gif-skill/
 ├── examples/
 │   ├── cli-demo.tape           # complete, adaptable vhs example
 │   └── web-demo.spec.ts        # complete, adaptable Playwright example
+├── docs/
+│   ├── demo.tape                # records this README's own demo.gif
+│   ├── demo.gif                 # embedded above — the skill dogfooding itself
+│   ├── sample.tape              # tiny sample tape — demo.tape cats it and checks its size
+│   └── sample.gif               # pre-rendered output of sample.tape
 ├── LICENSE
 └── README.md
 ```
