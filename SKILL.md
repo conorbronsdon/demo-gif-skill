@@ -1,6 +1,13 @@
 ---
 name: demo-gif
 description: Record, render, optimize, and embed a demo GIF in a repo's README. Use when asked to add a demo gif, record a demo, show the tool in action, or make a README more visual.
+version: 1.0.0
+license: MIT
+compatibility: Any AI coding assistant that supports agentskills.io SKILL.md format (Claude Code, Cursor, OpenClaw, Hermes Agent, etc.). Requires vhs or Playwright plus ffmpeg on the host for rendering.
+metadata:
+  author: Conor Bronsdon
+  tags: demo gif readme recording vhs playwright documentation
+  agentskills_spec: "1.0"
 ---
 
 # demo-gif
