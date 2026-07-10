@@ -96,5 +96,3 @@ Built by [Conor Bronsdon](https://conorbronsdon.com) — host of [Chain of Thoug
 ## Disclaimer
 
 _This is an independent personal project, not affiliated with, sponsored by, or endorsed by any company. All views expressed are my own._
-
-This is a personal open-source project; it isn't affiliated with or endorsed by any employer or client.
