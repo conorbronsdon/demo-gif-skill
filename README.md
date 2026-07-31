@@ -91,7 +91,7 @@ MIT. See `LICENSE`.
 
 ## About
 
-Built by [Conor Bronsdon](https://conorbronsdon.com) — host of [Chain of Thought](https://chainofthought.show/), a podcast on AI engineering. More skills and tools at [github.com/conorbronsdon](https://github.com/conorbronsdon) · [X](https://x.com/ConorBronsdon) · [LinkedIn](https://www.linkedin.com/in/conorbronsdon/).
+Built by [Conor Bronsdon](https://conorbronsdon.com/?utm_source=github&utm_medium=referral&utm_campaign=repo-readme&utm_content=demo-gif-skill) — host of [Chain of Thought](https://chainofthought.show/?utm_source=github&utm_medium=referral&utm_campaign=repo-readme&utm_content=demo-gif-skill), a podcast on AI engineering. More skills and tools at [github.com/conorbronsdon](https://github.com/conorbronsdon) · [X](https://x.com/ConorBronsdon) · [LinkedIn](https://www.linkedin.com/in/conorbronsdon/).
 
 ## Disclaimer
 
