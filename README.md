@@ -85,6 +85,18 @@ Screen-recording software gets you a GIF once. A `.tape` file or a Playwright sc
 
 The size targets and flag choices in `SKILL.md` and the reference docs were checked against the tools' actual documentation (and, where the tool was available locally, against real `--help` output) rather than assumed. If a flag has since changed in a newer release, `vhs validate`, `ffmpeg -h filter=<name>`, and `gifsicle --help` are the fastest way to confirm current behavior.
 
+## Codex plugin packaging
+
+The repository root is also a Codex plugin: its manifest is
+[`.codex-plugin/plugin.json`](.codex-plugin/plugin.json), and `skills/`
+contains the discovery adapter. Keep the whole repository when installing the
+plugin; the adapter reads the canonical root `SKILL.md` and its bundled
+resources. Existing standalone skill installations still work.
+
+Run the skill against your target repository, not the plugin installation
+directory. Plugin installation does not install external tools or authorize
+changes to your files.
+
 ## License
 
 MIT. See `LICENSE`.

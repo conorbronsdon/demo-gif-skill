@@ -1,0 +1,31 @@
+{
+  "name": "demo-gif-skill",
+  "version": "1.0.0",
+  "description": "Record and optimize reproducible README demo GIFs.",
+  "author": {
+    "name": "Conor Bronsdon",
+    "url": "https://github.com/conorbronsdon"
+  },
+  "homepage": "https://github.com/conorbronsdon/demo-gif-skill",
+  "repository": "https://github.com/conorbronsdon/demo-gif-skill",
+  "license": "MIT",
+  "keywords": [
+    "demo-gif",
+    "documentation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Demo GIF",
+    "shortDescription": "Record and optimize reproducible README demo GIFs.",
+    "longDescription": "Record and optimize reproducible README demo GIFs. Uses the repository's canonical skill instructions and bundled resources.",
+    "developerName": "Conor Bronsdon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Plan a demo GIF for this repository."
+    ]
+  }
+}
