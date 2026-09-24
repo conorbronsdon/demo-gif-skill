@@ -2,6 +2,8 @@
 
 # demo-gif
 
+> **Maintenance mode.** This project is stable and receives security fixes. New features aren't planned, but issues and pull requests are still welcome.
+
 Add a demo GIF to any repo's README in one prompt. Scripted, reproducible recordings — vhs for terminals, Playwright for web apps — rendered, optimized, and embedded.
 
 [![GitHub stars](https://img.shields.io/github/stars/conorbronsdon/demo-gif-skill?style=social)](https://github.com/conorbronsdon/demo-gif-skill/stargazers)
