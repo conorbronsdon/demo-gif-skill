@@ -64,6 +64,10 @@ None of these are bundled. The skill tells you what's missing and how to install
 ```
 demo-gif-skill/
 ├── SKILL.md                    # the skill itself — core flow and decision logic
+├── .codex-plugin/
+│   └── plugin.json             # Codex plugin manifest (see "Codex plugin packaging")
+├── skills/
+│   └── demo-gif/SKILL.md       # plugin discovery adapter; defers to the root SKILL.md
 ├── references/
 │   ├── tape-cookbook.md        # full vhs .tape command reference + patterns
 │   └── web-capture.md          # Playwright recording + ffmpeg GIF conversion recipes
@@ -76,7 +80,8 @@ demo-gif-skill/
 │   ├── sample.tape              # tiny sample tape — demo.tape cats it and checks its size
 │   └── sample.gif               # pre-rendered output of sample.tape
 ├── LICENSE
-└── README.md
+├── README.md
+└── SECURITY.md
 ```
 
 `SKILL.md` is what Claude Code actually loads and follows. The `references/` files are pulled in as needed for the deeper command syntax so the main skill file stays short. `examples/` are working starting points, not templates to fill in blanks on — copy one, adapt the parts specific to your tool.
