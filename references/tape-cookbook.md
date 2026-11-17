@@ -74,7 +74,7 @@ Insert
 Ctrl+C                           # modifier + key
 ```
 
-Every key command accepts an optional `@<time>` (delay before executing) and an optional trailing repeat count.
+Every key command accepts an optional `@<time>` and an optional trailing repeat count: `Key[@<time>] [count]`. The `@<time>` is not a delay before the key: vhs presses the key, then waits `<time>` after each press, so it sets the interval between repeats (the default is the current `TypingSpeed`). `Backspace@200ms 5` deletes one character every 200ms. For a pause before a key, put a `Sleep` before it.
 
 ## Timing and waiting
 
