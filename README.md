@@ -29,15 +29,19 @@ The GIF above is the skill dogfooding itself: `docs/demo.tape` and `docs/sample.
 
 ## Install
 
-Copy the skill folder into your project's skills directory:
+Clone the repo, then copy it into your project's skills directory:
 
 ```bash
+git clone https://github.com/conorbronsdon/demo-gif-skill
+mkdir -p /path/to/your-project/.claude/skills
 cp -r demo-gif-skill /path/to/your-project/.claude/skills/demo-gif
 ```
 
-Or, if you're using Claude Code's plugin system, install it as a plugin per your plugin marketplace's normal flow and point it at this repo.
+Use `~/.claude/skills/demo-gif` instead for a global install. Copy the whole folder, not just `SKILL.md`: the skill reads `references/` and `examples/` from beside it.
 
-Either way, once it's in place, Claude Code will pick it up automatically when a prompt matches (see below). No extra configuration needed.
+This repo has no Claude Code plugin manifest, so `claude plugin marketplace add` does not work with it. For Codex, see [Codex plugin packaging](#codex-plugin-packaging).
+
+Once it's in place, Claude Code will pick it up automatically when a prompt matches (see below). No extra configuration needed.
 
 ## Usage
 
@@ -54,7 +58,7 @@ Claude Code reads `SKILL.md`, works out whether the repo is a CLI, TUI, web app,
 You need at least one of these installed, depending on what you're demoing:
 
 - **Terminal demos:** [vhs](https://github.com/charmbracelet/vhs) (`brew install vhs`, `scoop install vhs`, `go install github.com/charmbracelet/vhs@latest`, or Docker). vhs itself shells out to `ttyd` and `ffmpeg`, so those need to be on PATH too (scoop's manifest installs both as dependencies automatically). No vhs available? Fall back to [asciinema](https://asciinema.org/) + [agg](https://github.com/asciinema/agg) — covered in `references/tape-cookbook.md`.
-- **Web app demos:** [Playwright](https://playwright.dev/) (`npm install -D @playwright/test`) plus [ffmpeg](https://ffmpeg.org/) for the video-to-GIF conversion.
+- **Web app demos:** [Playwright](https://playwright.dev/) plus a browser for it (`npm install -D @playwright/test tsx`, then `npx playwright install chromium`; `tsx` runs `examples/web-demo.spec.ts`), and [ffmpeg](https://ffmpeg.org/) for the video-to-GIF conversion.
 - **Optimization:** [gifsicle](https://www.lcdf.org/gifsicle/) for the final size pass. Optional: [gifski](https://gif.ski/) as an alternative GIF encoder for image-heavy content.
 
 None of these are bundled. The skill tells you what's missing and how to install it if a command fails.
@@ -78,7 +82,8 @@ demo-gif-skill/
 │   ├── demo.tape                # records this README's own demo.gif
 │   ├── demo.gif                 # embedded above — the skill dogfooding itself
 │   ├── sample.tape              # tiny sample tape — demo.tape cats it and checks its size
-│   └── sample.gif               # pre-rendered output of sample.tape
+│   ├── sample.gif               # pre-rendered output of sample.tape
+│   └── social-preview.png       # GitHub social preview image
 ├── LICENSE
 ├── README.md
 └── SECURITY.md

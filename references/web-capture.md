@@ -109,7 +109,8 @@ Same result, one command, no intermediate file left on disk.
 If [gifski](https://gif.ski/) is installed, it produces very clean output from a PNG frame sequence (it does its own high-quality quantization, arguably better than ffmpeg's palette filters for photo-real content):
 
 ```bash
-# extract frames first
+# extract frames first (ffmpeg does not create the output directory)
+mkdir -p frames
 ffmpeg -i recordings/demo.webm -vf "fps=12,scale=800:-1" frames/frame-%04d.png
 
 # then encode
